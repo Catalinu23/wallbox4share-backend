@@ -20,26 +20,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "USER")
+@Table(name = "CAR")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User implements Serializable {
-
+public class Car implements Serializable  {
     @Id
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "USERNAME")
-    private String username;
-
-    @Column(name="ADDRESS")
-    private String address;
-
-    @Column(name ="EMAIL")
-    private String email;
-
-    @Column(name ="PASSWORD")
-    private String password;
+    @Column(name ="CAR_BRAND")
+    private String car_brand;
 
 
 }

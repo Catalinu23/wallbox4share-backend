@@ -1,31 +1,31 @@
 package app.service;
 
-import app.entity.User;
-import app.repository.UserRepository;
+import app.entity.Car;
+import app.repository.CarRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserService {
+public class CarService {
 
     @Autowired
-    private UserRepository repository;
+    private CarRepository repository;
 
-    public User getUserById(Long id){
+    public Car getCarById(Long id){
         return repository.getById(id);
     }
 
-    public List<User> getAllUsers(){
+    public List<Car> getAllCars(){
         return repository.findAll();
     }
 
-    public void saveUser(User user){
-        repository.save(user);
+    public void saveCar(Car car){
+        repository.save(car);
     }
 
-    public void deleteUser(Long id){
+    public void deleteCar(Long id){
         repository.deleteById(id);
     }
 

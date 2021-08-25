@@ -13,33 +13,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "USER")
+@Table(name = "WALLBOX")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User implements Serializable {
-
+public class Wallbox implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "USERNAME")
-    private String username;
+    @Column(name="OWNER_NAME")
+    private String owner_name;
 
-    @Column(name="ADDRESS")
-    private String address;
+    @Column(name ="LATITUDE")
+    private Double latitude;
 
-    @Column(name ="EMAIL")
-    private String email;
-
-    @Column(name ="PASSWORD")
-    private String password;
-
-
+    @Column(name ="LONGITUDE")
+    private Double longitude;
 }
