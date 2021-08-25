@@ -1,37 +1,23 @@
 package app.service;
 
 import app.entity.User;
-import app.repository.UserRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  * TODO Class description.
  *
  * @author Szocs, Arpad (arpad.szocs@msg.group)
- * @since 8/23/2021
+ * @since 8/25/2021
  */
 @Service
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    private UserRepository repository;
+    User getUserById(Long id);
 
-    public User getUserById(Long id){
-        return repository.getById(id);
-    }
+    List<User> getAllUsers();
 
-    public List<User> getAllUsers(){
-        return repository.findAll();
-    }
+    void saveUser(User user);
 
-    public void saveUser(User user){
-        repository.save(user);
-    }
-
-    public void deleteUser(Long id){
-        repository.deleteById(id);
-    }
-
+    void deleteUser(Long id);
 }
