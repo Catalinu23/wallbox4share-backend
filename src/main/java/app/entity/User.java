@@ -41,5 +41,4 @@ public class User implements Serializable {
     @Column(name ="PASSWORD")
     private String password;
 
-
 }

@@ -36,3 +36,4 @@ public class Wallbox implements Serializable {
     @Column(name ="LONGITUDE")
     private Double longitude;
 }
+
