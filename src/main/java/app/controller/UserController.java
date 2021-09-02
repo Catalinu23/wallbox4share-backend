@@ -4,12 +4,12 @@ import app.entity.User;
 
 import java.util.List;
 
+import app.entity.Wallbox;
 import app.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * TODO Class description.
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @CrossOrigin
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -32,6 +33,13 @@ public class UserController {
     @GetMapping("/users")
     public List<User> findAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @PostMapping("/users/add")
+    public ResponseEntity<String> addUser(@RequestBody User user) {
+        log.info(user.getId() + " " + user.getEmail() + " " + user.getUsername() + " " + user.getPassword());
+        userService.saveUser(user);
+        return ResponseEntity.ok().body("{}");
     }
 
 

@@ -29,7 +29,7 @@ public class WallboxController {
 
     @PostMapping("/wallboxes/add")
     public ResponseEntity<String> addWallbox(@RequestBody Wallbox wallbox) {
-        log.info(wallbox.getId()+" "+wallbox.getOwner_name() + " " + wallbox.getLatitude()+ " " +wallbox.getLongitude());
+        log.info(wallbox.getOwner_name() + " " + wallbox.getLatitude()+ " " +wallbox.getLongitude());
         wallboxService.saveWallbox(wallbox);
         return ResponseEntity.ok().body("{}");
     }
