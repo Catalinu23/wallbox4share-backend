@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,5 +37,9 @@ public class Wallbox implements Serializable {
 
     @Column(name ="LONGITUDE")
     private Double longitude;
+
+    @ManyToOne
+    private User owner;
 }
+
 

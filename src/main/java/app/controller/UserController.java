@@ -42,5 +42,11 @@ public class UserController {
         return ResponseEntity.ok().body("{}");
     }
 
+    @PostMapping("/users/connect/{userId}/{wallboxId}")
+    public ResponseEntity<String> addWallboxToUser(@RequestParam Long userId, @RequestParam Long wallboxId){
+        userService.addWallbox(userId, wallboxId);
+        return ResponseEntity.ok().body("{}");
+    }
+
 
 }
