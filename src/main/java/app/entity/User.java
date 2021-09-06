@@ -2,10 +2,12 @@ package app.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +23,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "USER")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer",
+                       "handler"})
 public class User implements Serializable {
 
     @Id
@@ -32,13 +35,26 @@ public class User implements Serializable {
     @Column(name = "USERNAME")
     private String username;
 
-    @Column(name="ADDRESS")
+    @Column(name = "ADDRESS")
     private String address;
 
-    @Column(name ="EMAIL")
+    @Column(name = "EMAIL")
     private String email;
 
-    @Column(name ="PASSWORD")
+    @Column(name = "PASSWORD")
     private String password;
 
+
+    @OneToMany
+    private List<Wallbox> ownWallboxes;
+
+    public void addWallbox(Wallbox wallbox) {
+        this.ownWallboxes.add(wallbox);
+        wallbox.setOwner(this);
+    }
+
+    public void removeWallbox(Wallbox wallbox) {
+        this.ownWallboxes.remove(wallbox);
+        wallbox.setOwner(null);
+    }
 }
