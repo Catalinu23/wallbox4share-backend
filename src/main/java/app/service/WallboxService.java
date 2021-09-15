@@ -24,8 +24,8 @@ public class WallboxService {
         return repository.findAll();
     }
 
-    public void saveWallbox(Wallbox wallbox){
-        repository.save(wallbox);
+    public Wallbox saveWallbox(Wallbox wallbox){
+        return repository.save(wallbox);
     }
 
     public void deleteWallbox(Long id){

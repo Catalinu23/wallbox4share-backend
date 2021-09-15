@@ -1,8 +1,10 @@
 package app.controller;
+import app.dto.WallboxSaveDTO;
 import app.entity.Wallbox;
 
 import java.util.List;
 
+import app.service.UserService;
 import app.service.WallboxService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class WallboxController {
 
     @Autowired
     private WallboxService wallboxService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/wallbox/{wallboxid}")
     public Wallbox findWallboxById(@PathVariable Long wallboxid) {
@@ -28,9 +32,12 @@ public class WallboxController {
     }
 
     @PostMapping("/wallboxes/add")
-    public ResponseEntity<String> addWallbox(@RequestBody Wallbox wallbox) {
+    public ResponseEntity<String> addWallbox(@RequestBody WallboxSaveDTO wallboxSaveDTO) {
+        Wallbox wallbox = wallboxSaveDTO.getWallbox();
         log.info(wallbox.getOwner_name() + " " + wallbox.getLatitude()+ " " +wallbox.getLongitude());
-        wallboxService.saveWallbox(wallbox);
+        Wallbox savedWallbox = wallboxService.saveWallbox(wallbox);
+        log.info(savedWallbox.toString());
+        userService.addWallbox(wallboxSaveDTO.getUserId(), savedWallbox.getId());
         return ResponseEntity.ok().body("{}");
     }
 

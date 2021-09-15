@@ -47,6 +47,7 @@ public class UserService {
                                            .orElseThrow(EntityNotFoundException::new);
         log.info("Adding wallbox to user");
         user.addWallbox(wallbox);
+        saveUser(user);
     }
 
 }
