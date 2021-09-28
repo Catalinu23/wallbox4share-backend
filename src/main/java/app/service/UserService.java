@@ -30,8 +30,9 @@ public class UserService {
         return repository.findAll();
     }
 
-    public void saveUser(User user) {
+    public User saveUser(User user) {
         repository.save(user);
+        return user;
     }
 
     public void deleteUser(Long id) {

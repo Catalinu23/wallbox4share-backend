@@ -27,8 +27,8 @@ public class Wallbox implements Serializable {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name="OWNER_NAME")
-    private String owner_name;
+//    @Column(name="OWNER_NAME")
+//    private String owner_name;
 
     @Column(name ="LATITUDE")
     private Double latitude;
@@ -36,8 +36,15 @@ public class Wallbox implements Serializable {
     @Column(name ="LONGITUDE")
     private Double longitude;
 
-    @ManyToOne
-    private User owner;
+    @Column(name="PHONE_NUMBER")
+    private String phone_number;
+
+    @Column(name="DESCRIPTION")
+    private String description;
+
+    //@ManyToOne
+    @Column(name ="OWNER_ID")
+    private Long owner_id;
 }
 
 

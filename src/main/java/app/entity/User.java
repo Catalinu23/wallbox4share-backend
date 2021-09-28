@@ -35,8 +35,8 @@ public class User implements Serializable {
     @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "ADDRESS")
-    private String address;
+//    @Column(name = "ADDRESS")
+//    private String address;
 
     @Column(name = "EMAIL")
     private String email;
@@ -50,11 +50,11 @@ public class User implements Serializable {
 
     public void addWallbox(Wallbox wallbox) {
         this.ownWallboxes.add(wallbox);
-        wallbox.setOwner(this);
+        wallbox.setOwner_id(this.id);
     }
 
     public void removeWallbox(Wallbox wallbox) {
         this.ownWallboxes.remove(wallbox);
-        wallbox.setOwner(null);
+        wallbox.setOwner_id(null);
     }
 }

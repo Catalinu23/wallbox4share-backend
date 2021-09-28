@@ -34,7 +34,7 @@ public class WallboxController {
     @PostMapping("/wallboxes/add")
     public ResponseEntity<String> addWallbox(@RequestBody WallboxSaveDTO wallboxSaveDTO) {
         Wallbox wallbox = wallboxSaveDTO.getWallbox();
-        log.info(wallbox.getOwner_name() + " " + wallbox.getLatitude()+ " " +wallbox.getLongitude());
+        log.info(wallbox.getOwner_id() + " " + wallbox.getLatitude()+ " " +wallbox.getLongitude());
         Wallbox savedWallbox = wallboxService.saveWallbox(wallbox);
         log.info(savedWallbox.toString());
         userService.addWallbox(wallboxSaveDTO.getUserId(), savedWallbox.getId());
